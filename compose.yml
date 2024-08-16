@@ -1,0 +1,17 @@
+services:
+  cli:
+    build: .
+    command:
+    - sleep
+    - infinity
+    volumes:
+    - ./src:/app
+    env_file:
+    - .env
+  db:
+    build:
+      dockerfile: Dockerfile.db
+    environment:
+      POSTGRES_PASSWORD: password
+    volumes:
+    - ./docker/db/initdb.sql:/docker-entrypoint-initdb.d/initdb.sql
