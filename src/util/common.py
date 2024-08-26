@@ -6,6 +6,11 @@ from llama_index.llms.ollama import Ollama
 from llama_index.vector_stores.postgres import PGVectorStore
 
 from urllib.parse import urlparse
+# import logging
+# import sys
+
+# logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
+# logging.getLogger().addHandler(logging.StreamHandler(stream=sys.stdout))
 
 import nest_asyncio
 nest_asyncio.apply()
@@ -14,7 +19,7 @@ OLLAMA_URL = os.environ.get("OLLAMA_URL", "https://ollama-sqa.syapse.com/")
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
 DB_URL = os.environ.get("DB_URL", "postgresql://postgres:password@db:5432/postgres")
 
-Settings.llm = Ollama(model="qwen2", request_timeout=60.0, url=OLLAMA_URL)
+Settings.llm = Ollama(model="qwen2:7b", request_timeout=60.0, base_url=OLLAMA_URL)
 Settings.embed_model = OllamaEmbedding(
     model_name="all-minilm",
     base_url=OLLAMA_URL,
