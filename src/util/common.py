@@ -15,7 +15,7 @@ from urllib.parse import urlparse
 import nest_asyncio
 nest_asyncio.apply()
 
-OLLAMA_URL = os.environ.get("OLLAMA_URL", "https://ollama-sqa.syapse.com/")
+OLLAMA_URL = os.environ.get("OLLAMA_URL")
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
 DB_URL = os.environ.get("DB_URL", "postgresql://postgres:password@db:5432/postgres")
 
